@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    background-color: #292929;
+    padding: 2rem;
+    color: #cccccc;
+    margin-top: 44px;
+}
+hr {
+    border-top: 1px solid rgba(107, 107, 107, 1);
+}
