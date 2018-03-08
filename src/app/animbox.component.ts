@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { trigger, state, style, animate, transition } from "@angular/animations";
+import { trigger, state, style, animate, transition, keyframes } from "@angular/animations";
 
 @Component({
   selector: 'animbox',
@@ -31,12 +31,24 @@ import { trigger, state, style, animate, transition } from "@angular/animations"
           backgroundColor: '#985b00',
           transform: 'scale(2.2)'
         })),
+        state('stepped', style({
+          backgroundColor: '#549a76',
+          transform: 'scale(1)'
+        })),
         // transition from angular animation
         // from anything * 
         transition('* => basic', animate('800ms')),
         transition('* => original', animate('200ms')),
         transition('* => delaying', animate('800ms 1200ms ease-out')),
-        transition('* => easing', animate('800ms ease-in-out'))
+        transition('* => easing', animate('800ms ease-in-out')),
+        transition('* => stepped',[
+          animate('1000ms ease-in-out', keyframes([
+            style({backgroundColor: '#dd9344', transform: 'scale(1.4)', offset: 0.2}),
+            style({backgroundColor: '#5c2346', transform: 'scale(0.8)', offset: 0.4}),
+            style({backgroundColor: '#1b1b1b', transform: 'scale(1.2)', offset: 0.7}),
+            style({backgroundColor: '#549a76', transform: 'scale(1)', offset: 0.9})
+          ]))
+        ])
       ])
     ]
   })

@@ -5,7 +5,7 @@ import {
 @Component({
   selector: 'app-root',
   template: `
-    <nav class="navbar navbar-toggleable-sm fixed-top navbar-inverse mb-4" style="background-color:#5c2509;">
+    <nav class="navbar navbar-toggleable-sm fixed-top navbar-inverse mb-4" style="background-color:#663399;">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

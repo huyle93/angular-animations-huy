@@ -3,8 +3,9 @@
 body {
     background-color: #292929;
     padding: 2rem;
-    color: #cccccc;
+    color: #ffffff;
     margin-top: 44px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 hr {
     border-top: 1px solid rgba(107, 107, 107, 1);
