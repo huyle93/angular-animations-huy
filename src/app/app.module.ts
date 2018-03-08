@@ -9,6 +9,7 @@ import { HomeComponent } from "./routes/home.component";
 import { BasicComponent } from "./routes/basic.component";
 import { ContainedComponent } from "./routes/contained.component";
 import { AdvancedComponent } from "./routes/advanced.component";
+import { AnimboxComponent } from './animbox.component';
 
 const animationRoutes:Routes = [
 
@@ -40,7 +41,8 @@ const animationRoutes:Routes = [
     HomeComponent,
     BasicComponent,
     ContainedComponent,
-    AdvancedComponent
+    AdvancedComponent,
+    AnimboxComponent
   ],
   imports: [
     BrowserModule,
