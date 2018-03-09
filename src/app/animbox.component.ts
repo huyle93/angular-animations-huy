@@ -1,9 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { trigger, state, style, animate, transition, keyframes } from "@angular/animations";
+import { trigger, state, style, animate, transition, keyframes, group } from "@angular/animations";
 
 @Component({
   selector: 'animbox',
-  template: `<div [@changeState]="currentState" class="mybox mx-auto"></div>`,
+  template: `
+    <div [@changeState]="currentState" (@changeState.start)="animationBegin($event)" (@changeState.done)="animationEnd($event)" class="mybox mx-auto"></div>
+    <div class="msgbox mx-auto">{{msg}}</div>
+  `,
   styles: [`
       .mybox {
           background-color: #47748f;
@@ -11,6 +14,12 @@ import { trigger, state, style, animate, transition, keyframes } from "@angular/
           height: 200px;
           border-radius: 6px;
           margin: 6rem;
+      }
+      .msgbox {
+        margin: 2rem;
+        padding-top:2rem;
+        font-size: 1.8rem;
+        text-align: center;
       }
     `],
   animations: [
@@ -35,6 +44,10 @@ import { trigger, state, style, animate, transition, keyframes } from "@angular/
           backgroundColor: '#549a76',
           transform: 'scale(1)'
         })),
+        state('paralell', style({
+          backgroundColor: '#065e65',
+          transform: 'scale(0.4)'
+        })),
         // transition from angular animation
         // from anything * 
         transition('* => basic', animate('800ms')),
@@ -48,6 +61,16 @@ import { trigger, state, style, animate, transition, keyframes } from "@angular/
             style({backgroundColor: '#1b1b1b', transform: 'scale(1.2)', offset: 0.7}),
             style({backgroundColor: '#549a76', transform: 'scale(1)', offset: 0.9})
           ]))
+        ]),
+        transition('* => paralell', [
+          group([
+            animate('1000ms ease-out', style({
+              backgroundColor: '#065e65'
+            })),
+            animate('2000ms ease-out', style({
+              transform: 'scale(0.4)'
+            }))
+          ])
         ])
       ])
     ]
@@ -56,4 +79,12 @@ import { trigger, state, style, animate, transition, keyframes } from "@angular/
 
 export class AnimboxComponent {
   @Input() currentState;
+
+  msg = "rest";
+  animationBegin(e) {
+    this.msg = e.phaseName + ": " + e.fromState + " => " + e.toState + " [" + e.totalTime + "ms]";
+  }
+  animationEnd(e) {
+    this.msg = e.phaseName + ": " + e.fromState + " => " + e.toState + " [" + e.totalTime + "ms]";
+  }
 }
