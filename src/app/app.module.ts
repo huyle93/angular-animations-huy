@@ -10,6 +10,7 @@ import { BasicComponent } from "./routes/basic.component";
 import { ContainedComponent } from "./routes/contained.component";
 import { AdvancedComponent } from "./routes/advanced.component";
 import { AnimboxComponent } from './animbox.component';
+import { MouseComponent } from './mouse.component';
 
 const animationRoutes:Routes = [
 
@@ -42,7 +43,8 @@ const animationRoutes:Routes = [
     BasicComponent,
     ContainedComponent,
     AdvancedComponent,
-    AnimboxComponent
+    AnimboxComponent,
+    MouseComponent
   ],
   imports: [
     BrowserModule,
